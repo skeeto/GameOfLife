@@ -3,28 +3,16 @@ import java.util.*;
 
 // This is the basic cell that implements Conway's Game of Life
 public class BasicCell extends Cell {
-    private Vector<Cell> adj = null;
-    private int curState, nextState;
     private Color live, dead;
-    private static Random rand = new Random();
 
     public BasicCell() {
         this(rand.nextInt(2));
     }
 
     public BasicCell(int initState) {
-        adj = new Vector<Cell>();
         curState = nextState = initState;
         live = new Color(0, 0, 0);
         dead = new Color(255, 255, 255);
-    }
-
-    public void addAdj(Vector<Cell> cells) {
-        adj.addAll(cells);
-    }
-
-    public int getState() {
-        return curState;
     }
 
     public Color getColor() {
@@ -64,9 +52,5 @@ public class BasicCell extends Cell {
 
     public Cell divide(int state) {
         return new BasicCell(state);
-    }
-
-    public void sync() {
-        curState = nextState;
     }
 }
