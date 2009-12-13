@@ -14,6 +14,12 @@ public abstract class Cell {
     // Poll adjacent cells and update the next state
     abstract public void update();
 
+    // Built-in factory: create a new cell with a random state
+    abstract public Cell divide();
+
+    // Built-in factory: create a new cell with given state
+    abstract public Cell divide(int state);
+
     // Advance cell to the previously calculated next state
     abstract public void sync();
 }

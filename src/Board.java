@@ -8,7 +8,7 @@ public class Board extends Canvas implements Runnable {
     private Cell[][] grid = null;
     private int sleepTime;
 
-    public Board(int unitSize, int width, int height) {
+    public Board(int unitSize, int width, int height, Cell starter) {
 	super();
 	this.unitSize = unitSize;
 	this.width = width;
@@ -17,10 +17,9 @@ public class Board extends Canvas implements Runnable {
 	sleepTime = 200;
 
         grid = new Cell[width][height];
-        Random rand = new Random();
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                grid[i][j] = new BasicCell(rand.nextInt(2));
+                grid[i][j] = starter.divide();
             }
         }
 

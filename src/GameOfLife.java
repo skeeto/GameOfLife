@@ -8,7 +8,7 @@ public class GameOfLife {
 
     public static void main(String args[]) {
         Frame frame = new Frame("Game of Life");
-        Board board = new Board(unitSize, width, height);
+        Board board = new Board(unitSize, width, height, new BasicCell());
         frame.add(board);
         frame.setSize(width*unitSize+12, height*unitSize+30);
         frame.setVisible(true);

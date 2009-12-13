@@ -6,6 +6,11 @@ public class BasicCell extends Cell {
     private Vector<Cell> adj = null;
     private int curState, nextState;
     private Color live, dead;
+    private static Random rand = new Random();
+
+    public BasicCell() {
+        this(rand.nextInt(2));
+    }
 
     public BasicCell(int initState) {
         adj = new Vector<Cell>();
@@ -51,6 +56,14 @@ public class BasicCell extends Cell {
             nextState = 1;
         else
             nextState = 0;
+    }
+
+    public Cell divide() {
+        return divide(rand.nextInt(2));
+    }
+
+    public Cell divide(int state) {
+        return new BasicCell(state);
     }
 
     public void sync() {
