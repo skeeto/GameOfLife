@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project name="GoL" default="jar" basedir=".">
+  <property name="src" value="src"/>
+  <property name="build" value="build"/>
+  <property name="jar" value="GoL.jar"/>
+
+  <target name="init">
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <javac srcdir="${src}" destdir="${build}">
+      <compilerarg value="-Xlint"/>
+    </javac>
+  </target>
+
+  <target name="jar" depends="compile">
+    <jar destfile="${jar}" basedir="${build}">
+      <manifest>
+        <attribute name="Main-Class" value="GameOfLife"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="run" depends="jar">
+    <java jar="${jar}" fork="true"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="${build}"/>
+    <delete file="${jar}"/>
+  </target>
+</project>
