@@ -53,10 +53,12 @@ public class GrowthCell extends Cell {
         else if (curState == 0 && liveCount == 3)
             nextState = 1;
         else
-            nextState = 0;
+            nextState = curState - Math.min(Math.abs(liveCount - 2), 3);
 
         if (nextState > 3)
             nextState = 3;
+        if (nextState < 0)
+            nextState = 0;
     }
 
     // Built-in factory: create a new cell with a random state
