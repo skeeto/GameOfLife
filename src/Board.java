@@ -9,12 +9,12 @@ public class Board extends Canvas implements Runnable {
     private int sleepTime;
 
     public Board(int unitSize, int width, int height, Cell starter) {
-	super();
-	this.unitSize = unitSize;
-	this.width = width;
-	this.height = height;
+        super();
+        this.unitSize = unitSize;
+        this.width = width;
+        this.height = height;
         this.setSize(width*unitSize, height*unitSize);
-	sleepTime = 200;
+        sleepTime = 200;
 
         grid = new Cell[width][height];
         for (int i = 0; i < width; i++) {
@@ -23,39 +23,39 @@ public class Board extends Canvas implements Runnable {
             }
         }
 
-	// Wire up the cells
+        // Wire up the cells
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-		Vector<Cell> cells = new Vector<Cell>();
-		for (int x = i-1; x <= i+1; x++)
-		    for (int y = j-1; y <= j+1; y++) {
-			if (x == 0 && y == 0)
-			    continue;
-			if (x > 0 && y > 0 && x < width && y < height)
-			    cells.add(grid[x][y]);
-		    }
-		grid[i][j].addAdj(cells);
+                Vector<Cell> cells = new Vector<Cell>();
+                for (int x = i-1; x <= i+1; x++)
+                    for (int y = j-1; y <= j+1; y++) {
+                        if (x == 0 && y == 0)
+                            continue;
+                        if (x > 0 && y > 0 && x < width && y < height)
+                            cells.add(grid[x][y]);
+                    }
+                grid[i][j].addAdj(cells);
             }
         }
 
-	(new Thread(this)).start();
+        (new Thread(this)).start();
     }
 
     public void paint(Graphics g) {
-	int unitWidth  = width*unitSize;
+        int unitWidth  = width*unitSize;
         int unitHeight = height*unitSize;
         g.drawLine(0, unitHeight, unitWidth, unitHeight);
         g.drawLine(unitWidth, 0, unitWidth, unitHeight);
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-		drawCell(g, i, j);
+                drawCell(g, i, j);
             }
         }
     }
 
     private void drawCell(Graphics g, int x, int y) {
-	g.setColor(grid[x][y].getColor());
-	g.fillRect(x * unitSize, y * unitSize, unitSize, unitSize);
+        g.setColor(grid[x][y].getColor());
+        g.fillRect(x * unitSize, y * unitSize, unitSize, unitSize);
     }
 
     public void iterate() {
@@ -72,14 +72,14 @@ public class Board extends Canvas implements Runnable {
     }
 
     public void run() {
-	while (true) {
-	    try {
-		Thread.sleep(sleepTime);
-	    } catch (Exception e) {
-		return;
-	    }
-	    iterate();
-	    paint(this.getGraphics());
-	}
+        while (true) {
+            try {
+                Thread.sleep(sleepTime);
+            } catch (Exception e) {
+                return;
+            }
+            iterate();
+            paint(this.getGraphics());
+        }
     }
 }
