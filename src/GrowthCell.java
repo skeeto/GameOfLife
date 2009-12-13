@@ -14,8 +14,8 @@ public class GrowthCell extends Cell {
 
     public GrowthCell(int state) {
         curState = nextState = state;
-	adj = new Vector<Cell>();
-	colors = new Color[4];
+        adj = new Vector<Cell>();
+        colors = new Color[4];
         colors[0] = new Color(255, 255, 255);
         colors[1] = new Color(0, 255, 0);
         colors[2] = new Color(0, 127, 255);
