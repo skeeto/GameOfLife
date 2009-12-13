@@ -16,6 +16,7 @@ public class Board extends Canvas implements Runnable {
         this.setSize(width*unitSize, height*unitSize);
         sleepTime = 200;
 
+        // Create grid with cells
         grid = new Cell[width][height];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -47,6 +48,7 @@ public class Board extends Canvas implements Runnable {
             }
         }
 
+        // Run the iteration thread
         (new Thread(this)).start();
     }
 
@@ -67,6 +69,7 @@ public class Board extends Canvas implements Runnable {
         g.fillRect(x * unitSize, y * unitSize, unitSize, unitSize);
     }
 
+    // Perform a single iteration of the automata
     public void iterate() {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
