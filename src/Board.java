@@ -29,7 +29,7 @@ public class Board extends Canvas implements Runnable {
                 Vector<Cell> cells = new Vector<Cell>();
                 for (int x = i-1; x <= i+1; x++)
                     for (int y = j-1; y <= j+1; y++) {
-                        if (x == 0 && y == 0)
+                        if (x == i && y == j)
                             continue;
                         if (x > 0 && y > 0 && x < width && y < height)
                             cells.add(grid[x][y]);
