@@ -31,8 +31,17 @@ public class Board extends Canvas implements Runnable {
                     for (int y = j-1; y <= j+1; y++) {
                         if (x == i && y == j)
                             continue;
-                        if (x > 0 && y > 0 && x < width && y < height)
-                            cells.add(grid[x][y]);
+                        int xx = x;
+                        int yy = y;
+                        if (xx >= width)
+                            xx -= width;
+                        if (yy >= height)
+                            yy -= height;
+                        if (xx < 0)
+                            xx += width;
+                        if (yy < 0)
+                            yy += height;
+                        cells.add(grid[xx][yy]);
                     }
                 grid[i][j].addAdj(cells);
             }
