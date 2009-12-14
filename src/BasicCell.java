@@ -1,7 +1,7 @@
+// BasicCell.java - the basic cell that implements Conway's Game of Life
 import java.awt.*;
 import java.util.*;
 
-// This is the basic cell that implements Conway's Game of Life
 public class BasicCell extends Cell {
     private Color live, dead;
 

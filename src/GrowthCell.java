@@ -1,7 +1,7 @@
+// GrowthCell.java - custom cell that grows over time
 import java.awt.*;
 import java.util.*;
 
-// This is the basic cell that implements Conway's Game of Life
 public class GrowthCell extends Cell {
     private Color[] colors = null;
 

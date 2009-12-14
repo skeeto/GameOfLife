@@ -1,3 +1,4 @@
+// Cell.java - Abstract Cell class for implementing various cells
 import java.awt.*;
 import java.util.*;
 

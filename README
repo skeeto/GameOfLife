@@ -1,0 +1,7 @@
+This is a simple Game of Life implementation in Java. It accepts up to
+four arguments,
+
+java -jar GoL.jar [<cell type> [<width> <height> [<pixels per cell>]]]
+
+You can define your own cell type just by inheriting the Cell abstract
+class.
