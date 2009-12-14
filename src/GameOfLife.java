@@ -14,6 +14,8 @@ public class GameOfLife {
                 cellType = new GrowthCell();
             else if (args[0].equals("basic"))
                 cellType = new BasicCell();
+            else if (args[0].equals("random"))
+                cellType = new RandomFactory();
             else {
                 System.out.println("error: unknown cell type " + args[0]);
                 System.exit(-1);
