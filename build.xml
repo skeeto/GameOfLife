@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <project name="GoL" default="jar" basedir=".">
-  <property name="src" value="src"/>
-  <property name="build" value="build"/>
-  <property name="jar" value="GoL.jar"/>
+  <property name="jar.file" value="${ant.project.name}.jar"/>
+  <property name="src.dir" value="src"/>
+  <property name="build.dir" value="build"/>
 
   <target name="init">
-    <mkdir dir="${build}"/>
+    <mkdir dir="${build.dir}"/>
   </target>
 
   <target name="compile" depends="init">
-    <javac srcdir="${src}" destdir="${build}">
+    <javac srcdir="${src.dir}" destdir="${build.dir}">
       <compilerarg value="-Xlint"/>
     </javac>
   </target>
 
   <target name="jar" depends="compile">
-    <jar destfile="${jar}" basedir="${build}">
+    <jar destfile="${jar.file}" basedir="${build.dir}">
       <manifest>
         <attribute name="Main-Class" value="com.nullprogram.gol.GameOfLife"/>
       </manifest>
@@ -23,7 +23,7 @@
   </target>
 
   <target name="run" depends="jar">
-    <java jar="${jar}" fork="true"/>
+    <java jar="${jar.file}" fork="true"/>
   </target>
 
   <target name="clean">
