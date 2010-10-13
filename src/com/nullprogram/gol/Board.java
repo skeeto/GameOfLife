@@ -1,10 +1,15 @@
 package com.nullprogram.gol;
 
 // Board.java - This sets up the cell grid and iterates the automata
-import java.awt.*;
-import java.util.*;
+import java.util.Vector;
 
-public class Board extends Canvas implements Runnable {
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+
+public class Board extends JPanel implements Runnable {
     private static final long serialVersionUID = 1L;
 
     private int unitSize, width, height;
@@ -16,8 +21,10 @@ public class Board extends Canvas implements Runnable {
         this.unitSize = unitSize;
         this.width = width;
         this.height = height;
-        this.setSize(width*unitSize, height*unitSize);
         sleepTime = 200;
+        Dimension size = new Dimension(width * unitSize, height * unitSize);
+        setMinimumSize(size);
+        setPreferredSize(size);
 
         // Create grid with cells
         grid = new Cell[width][height];
@@ -55,7 +62,8 @@ public class Board extends Canvas implements Runnable {
         (new Thread(this)).start();
     }
 
-    public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         int unitWidth  = width*unitSize;
         int unitHeight = height*unitSize;
         g.drawLine(0, unitHeight, unitWidth, unitHeight);
@@ -94,7 +102,7 @@ public class Board extends Canvas implements Runnable {
                 return;
             }
             iterate();
-            paint(this.getGraphics());
+            repaint();
         }
     }
 }

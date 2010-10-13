@@ -13,8 +13,7 @@
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 package com.nullprogram.gol;
 
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JFrame;
 
 public class GameOfLife {
     static int width = 50;
@@ -45,15 +44,12 @@ public class GameOfLife {
         }
 
         // Initialize GUI
-        Frame frame = new Frame("Game of Life");
+        JFrame frame = new JFrame("Game of Life");
         Board board = new Board(unitSize, width, height, cellType);
         frame.add(board);
-        frame.setSize(width*unitSize+12, height*unitSize+30);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.pack();
         frame.setVisible(true);
-        frame.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent we) {
-                System.exit(0);
-            }
-        });
     }
 }
