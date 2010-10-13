@@ -1,6 +1,5 @@
 package com.nullprogram.gol;
 
-// Board.java - This sets up the cell grid and iterates the automata
 import java.util.Vector;
 
 import java.awt.Color;
@@ -9,7 +8,11 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
+/**
+ * Sets up the cell grid and iterates the automata.
+ */
 public class Board extends JPanel implements Runnable {
+
     private static final long serialVersionUID = 1L;
 
     private int unitSize, width, height;
@@ -26,7 +29,7 @@ public class Board extends JPanel implements Runnable {
         setMinimumSize(size);
         setPreferredSize(size);
 
-        // Create grid with cells
+        /* Create grid with cells */
         grid = new Cell[width][height];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
@@ -34,7 +37,7 @@ public class Board extends JPanel implements Runnable {
             }
         }
 
-        // Wire up the cells
+        /* Wire up the cells */
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Vector<Cell> cells = new Vector<Cell>();
@@ -58,7 +61,7 @@ public class Board extends JPanel implements Runnable {
             }
         }
 
-        // Run the iteration thread
+        /* Run the iteration thread */
         (new Thread(this)).start();
     }
 
@@ -80,7 +83,7 @@ public class Board extends JPanel implements Runnable {
         g.fillRect(x * unitSize, y * unitSize, unitSize, unitSize);
     }
 
-    // Perform a single iteration of the automata
+    /* Perform a single iteration of the automata */
     public void iterate() {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {

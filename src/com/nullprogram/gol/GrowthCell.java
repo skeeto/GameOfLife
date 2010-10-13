@@ -1,10 +1,13 @@
 package com.nullprogram.gol;
 
-// GrowthCell.java - custom cell that grows over time
 import java.awt.*;
 import java.util.*;
 
+/**
+ * A cell that grows over time.
+ */
 public class GrowthCell extends Cell {
+
     private Color[] colors = null;
 
     public GrowthCell() {
@@ -20,12 +23,12 @@ public class GrowthCell extends Cell {
         colors[3] = new Color(0, 0, 255);
     }
 
-    // Get the color corresponding to the current cell state
+    /* Get the color corresponding to the current cell state */
     public Color getColor() {
         return colors[curState];
     }
 
-    // Poll adjacent cells and update the next state
+    /* Poll adjacent cells and update the next state */
     public void update() {
         int liveCount = 0;
         Iterator<Cell> it = adj.iterator();
@@ -35,7 +38,7 @@ public class GrowthCell extends Cell {
                 liveCount = liveCount + 1;
         }
 
-        // Like the original, but if we remain alive, we grow
+        /* Like the original, but if we remain alive, we grow */
         if (curState > 0 && (liveCount == 2 || liveCount == 3))
             nextState = curState + 1;
         else if (curState == 0 && liveCount == 3)
@@ -49,12 +52,12 @@ public class GrowthCell extends Cell {
             nextState = 0;
     }
 
-    // Built-in factory: create a new cell with a random state
+    /* Built-in factory: create a new cell with a random state */
     public Cell divide() {
         return divide(rand.nextInt(2));
     }
 
-    // Built-in factory: create a new cell with given state
+    /* Built-in factory: create a new cell with given state */
     public Cell divide(int state) {
         return new GrowthCell(state);
     }

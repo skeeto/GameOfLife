@@ -1,13 +1,15 @@
 package com.nullprogram.gol;
 
-// RandomFactory.java - spawns off random cells on divide()
-//
-// This cell type doesn't actually do anything itself.
 import java.awt.*;
 import java.util.*;
 
-// This is the basic cell that implements Conway's Game of Life
+/**
+ * Spawns off random cells on divide().
+ *
+ * This cell type doesn't actually do anything itself.
+ */
 public class RandomFactory extends Cell {
+
     interface Factory {
         Cell create();
     }
@@ -33,7 +35,7 @@ public class RandomFactory extends Cell {
     }
 
     public void update() {
-        // Nothing
+        /* Nothing */
     }
 
     public Cell divide() {

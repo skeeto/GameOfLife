@@ -1,10 +1,13 @@
 package com.nullprogram.gol;
 
-// BasicCell.java - the basic cell that implements Conway's Game of Life
 import java.awt.*;
 import java.util.*;
 
+/**
+ * Basic cell for implementing Conway's Game of Life.
+ */
 public class BasicCell extends Cell {
+
     private Color live, dead;
 
     public BasicCell() {
@@ -32,14 +35,15 @@ public class BasicCell extends Cell {
                 liveCount = liveCount + 1;
         }
 
-        //   1. Any live cell with fewer than two live neighbours
-        //      dies, as if caused by underpopulation.
-        //   2. Any live cell with more than three live neighbours
-        //      dies, as if by overcrowding.
-        //   3. Any live cell with two or three live neighbours lives
-        //      on to the next generation.
-        //   4. Any dead cell with exactly three live neighbours
-        //      becomes a live cell.
+        /*   1. Any live cell with fewer than two live neighbours
+         *      dies, as if caused by underpopulation.
+         *   2. Any live cell with more than three live neighbours
+         *      dies, as if by overcrowding.
+         *   3. Any live cell with two or three live neighbours lives
+         *      on to the next generation.
+         *   4. Any dead cell with exactly three live neighbours
+         *      becomes a live cell.
+         */
         if (curState == 1 && (liveCount == 2 || liveCount == 3))
             nextState = 1;
         else if (curState == 0 && liveCount == 3)
