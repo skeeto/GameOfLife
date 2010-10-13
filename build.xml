@@ -30,4 +30,12 @@
     <delete dir="${build}"/>
     <delete file="${jar}"/>
   </target>
+
+  <target name="format" description="Run the indenter on all source files.">
+    <apply executable="astyle">
+      <arg value="--mode=java"/>
+      <arg value="--suffix=none"/>
+      <fileset dir="${src.dir}" includes="**/*.java"/>
+    </apply>
+  </target>
 </project>
