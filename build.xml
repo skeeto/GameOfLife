@@ -17,7 +17,7 @@
   <target name="jar" depends="compile">
     <jar destfile="${jar}" basedir="${build}">
       <manifest>
-        <attribute name="Main-Class" value="GameOfLife"/>
+        <attribute name="Main-Class" value="com.nullprogram.gol.GameOfLife"/>
       </manifest>
     </jar>
   </target>

@@ -1,3 +1,5 @@
+package com.nullprogram.gol;
+
 // Board.java - This sets up the cell grid and iterates the automata
 import java.awt.*;
 import java.util.*;

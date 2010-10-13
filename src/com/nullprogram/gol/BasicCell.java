@@ -1,3 +1,5 @@
+package com.nullprogram.gol;
+
 // BasicCell.java - the basic cell that implements Conway's Game of Life
 import java.awt.*;
 import java.util.*;

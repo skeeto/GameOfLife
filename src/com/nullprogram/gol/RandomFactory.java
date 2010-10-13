@@ -1,3 +1,5 @@
+package com.nullprogram.gol;
+
 // RandomFactory.java - spawns off random cells on divide()
 //
 // This cell type doesn't actually do anything itself.

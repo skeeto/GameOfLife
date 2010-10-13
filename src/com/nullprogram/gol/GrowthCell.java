@@ -1,3 +1,5 @@
+package com.nullprogram.gol;
+
 // GrowthCell.java - custom cell that grows over time
 import java.awt.*;
 import java.util.*;
