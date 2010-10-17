@@ -26,6 +26,11 @@ public abstract class Cell {
         return curState;
     }
 
+    /* Return current cell state */
+    public void setState(int state) {
+        curState = state;
+    }
+
     /* Get the color corresponding to the current cell state */
     abstract public Color getColor();
 
