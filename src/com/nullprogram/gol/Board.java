@@ -18,6 +18,7 @@ public class Board extends JPanel implements Runnable {
     private int unitSize, width, height;
     private Cell[][] grid = null;
     private int sleepTime;
+    private volatile boolean enabled;
 
     public Board(int unitSize, int width, int height, Cell starter) {
         super();
@@ -61,8 +62,21 @@ public class Board extends JPanel implements Runnable {
             }
         }
 
-        /* Run the iteration thread */
-        (new Thread(this)).start();
+        enabled = false;
+        start();
+    }
+
+    /* Run the iteration thread */
+    public void start() {
+        if (!enabled) {
+            enabled = true;
+            (new Thread(this)).start();
+        }
+    }
+
+    /* Stop the iteration thread. */
+    public void stop() {
+        enabled = false;
     }
 
     public void paintComponent(Graphics g) {
@@ -98,7 +112,7 @@ public class Board extends JPanel implements Runnable {
     }
 
     public void run() {
-        while (true) {
+        while (enabled) {
             try {
                 Thread.sleep(sleepTime);
             } catch (Exception e) {
