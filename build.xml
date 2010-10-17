@@ -3,6 +3,7 @@
   <property name="jar.file" value="${ant.project.name}.jar"/>
   <property name="src.dir" value="src"/>
   <property name="build.dir" value="build"/>
+  <property name="applet.html" value="index.html"/>
 
   <target name="init">
     <mkdir dir="${build.dir}"/>
@@ -37,5 +38,11 @@
       <arg value="--suffix=none"/>
       <fileset dir="${src.dir}" includes="**/*.java"/>
     </apply>
+  </target>
+
+  <target name="applet" depends="jar" description="Run the applet version.">
+    <exec executable="appletviewer">
+      <arg value="${applet.html}"/>
+    </exec>
   </target>
 </project>
