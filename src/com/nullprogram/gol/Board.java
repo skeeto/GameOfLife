@@ -133,14 +133,19 @@ public class Board extends JPanel
 
     /** {@inheritDoc} */
     public final void mouseDragged(final MouseEvent e) {
+        editCell(e.getPoint());
+    }
+
+    /* Edit the cell at the given point according to button. */
+    private void editCell(Point p) {
         int state;
         if (button == MouseEvent.BUTTON1) {
             state = 1;
-        } else {
+        } else if (button == MouseEvent.BUTTON3) {
             state = 0;
+        } else {
+            return;
         }
-        //System.out.println("drag " + e.getButton());
-        Point p = e.getPoint();
         int x = (int) (p.getX() / unitSize);
         int y = (int) (p.getY() / unitSize);
         if ((x < width) && (x >= 0) && (y < height) && (y >= 0)) {
@@ -158,6 +163,8 @@ public class Board extends JPanel
             } else {
                 start();
             }
+        } else {
+            editCell(e.getPoint());
         }
     }
 
