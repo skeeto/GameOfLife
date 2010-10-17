@@ -152,6 +152,13 @@ public class Board extends JPanel
     /** {@inheritDoc} */
     public void mousePressed(final MouseEvent e) {
         button = e.getButton();
+        if (button == MouseEvent.BUTTON2) {
+            if (enabled) {
+                stop();
+            } else {
+                start();
+            }
+        }
     }
 
     /** {@inheritDoc} */
