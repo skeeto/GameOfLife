@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Conway's Game of Life</title>
+  </head>
+  <body bgcolor="black" text="gray">
+    <center>
+      <h1>Conway's Game of Life</h1>
+      <applet code="com.nullprogram.gol.LifeApplet"
+	      archive="GoL.jar" width="600" height="600">
+      </applet>
+    </center>
+    <ol style="width: 600px; margin-left: auto; margin-right: auto;">
+      <li>
+	White tiles are dead cells.
+      </li>
+      <li>
+	Black tiles are living cells.
+      </li>
+      <li>
+	Any live cell with fewer than two live neighbours dies, as
+	if caused by under-population.
+      </li>
+      <li>
+	Any live cell with more than three live neighbours dies, as
+	if by overcrowding.
+      </li>
+      <li>
+	Any live cell with two or three live neighbours lives on to
+	the next generation.</li>
+      <li>
+	Any dead cell with exactly three live neighbours becomes a
+	live cell, as if by reproduction.</li>
+    </ol>
+  </body>
+</html>
