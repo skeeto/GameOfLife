@@ -5,13 +5,18 @@ import java.util.Vector;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
 /**
  * Sets up the cell grid and iterates the automata.
  */
-public class Board extends JPanel implements Runnable {
+public class Board extends JPanel
+            implements Runnable, MouseMotionListener, MouseListener {
 
     private static final long serialVersionUID = 1L;
 
@@ -19,6 +24,7 @@ public class Board extends JPanel implements Runnable {
     private Cell[][] grid = null;
     private int sleepTime;
     private volatile boolean enabled;
+    private int button;
 
     public Board(int unitSize, int width, int height, Cell starter) {
         super();
@@ -29,6 +35,8 @@ public class Board extends JPanel implements Runnable {
         Dimension size = new Dimension(width * unitSize, height * unitSize);
         setMinimumSize(size);
         setPreferredSize(size);
+        addMouseListener(this);
+        addMouseMotionListener(this);
 
         /* Create grid with cells */
         grid = new Cell[width][height];
@@ -121,5 +129,53 @@ public class Board extends JPanel implements Runnable {
             iterate();
             repaint();
         }
+    }
+
+    /** {@inheritDoc} */
+    public final void mouseDragged(final MouseEvent e) {
+        int state;
+        if (button == MouseEvent.BUTTON1) {
+            state = 1;
+        } else {
+            state = 0;
+        }
+        //System.out.println("drag " + e.getButton());
+        Point p = e.getPoint();
+        int x = (int) (p.getX() / unitSize);
+        int y = (int) (p.getY() / unitSize);
+        if ((x < width) && (x >= 0) && (y < height) && (y >= 0)) {
+            grid[x][y].setState(state);
+        }
+        repaint();
+    }
+
+    /** {@inheritDoc} */
+    public void mousePressed(final MouseEvent e) {
+        button = e.getButton();
+    }
+
+    /** {@inheritDoc} */
+    public void mouseMoved(final MouseEvent e) {
+        /* Do nothing */
+    }
+
+    /** {@inheritDoc} */
+    public void mouseExited(final MouseEvent e) {
+        /* Do nothing */
+    }
+
+    /** {@inheritDoc} */
+    public void mouseEntered(final MouseEvent e) {
+        /* Do nothing */
+    }
+
+    /** {@inheritDoc} */
+    public void mouseClicked(final MouseEvent e) {
+        /* Do nothing */
+    }
+
+    /** {@inheritDoc} */
+    public final void mouseReleased(final MouseEvent e) {
+        /* Do nothing */
     }
 }
