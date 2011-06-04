@@ -25,6 +25,9 @@ public class GameOfLife {
     static int unitSize = 10;
 
     public static void main(String args[]) {
+        /* Fix for poor OpenJDK performance. */
+        System.setProperty("sun.java2d.pmoffscreen", "false");
+
         /* Parse command line arguments */
         Cell cellType = new BasicCell();
         if (args.length >= 1) {
