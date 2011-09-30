@@ -3,10 +3,12 @@
   <property name="jar.file" value="${ant.project.name}.jar"/>
   <property name="src.dir" value="src"/>
   <property name="build.dir" value="build"/>
+  <property name="dist.dir" value="dist"/>
   <property name="applet.html" value="index.html"/>
 
   <target name="init">
     <mkdir dir="${build.dir}"/>
+    <mkdir dir="${dist.dir}"/>
   </target>
 
   <target name="compile" depends="init">
@@ -17,20 +19,21 @@
   </target>
 
   <target name="jar" depends="compile">
-    <jar destfile="${jar.file}" basedir="${build.dir}">
+    <jar destfile="${dist.dir}/${jar.file}" basedir="${build.dir}">
       <manifest>
         <attribute name="Main-Class" value="com.nullprogram.gol.GameOfLife"/>
       </manifest>
     </jar>
+    <copy file="${applet.html}" tofile="${dist.dir}/index.html"/>
   </target>
 
   <target name="run" depends="jar">
-    <java jar="${jar.file}" fork="true"/>
+    <java jar="${dist.dir}/${jar.file}" fork="true"/>
   </target>
 
   <target name="clean">
-    <delete dir="${build}"/>
-    <delete file="${jar}"/>
+    <delete dir="${build.dir}"/>
+    <delete dir="${dist.dir}"/>
   </target>
 
   <target name="format" description="Run the indenter on all source files.">
@@ -43,7 +46,7 @@
 
   <target name="applet" depends="jar" description="Run the applet version.">
     <exec executable="appletviewer">
-      <arg value="${applet.html}"/>
+      <arg value="${dist.dir}/index.html"/>
     </exec>
   </target>
 </project>
